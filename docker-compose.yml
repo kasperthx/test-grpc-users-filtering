@@ -6,8 +6,8 @@ services:
     environment:
       - GRPC_BIND_URL=0.0.0.0:8001
     ports:
-      - "8001:8001"   # gRPC
-      - "3000:3000"   # Nest HTTP (optional)
+      - "8001:8001"   
+      - "3000:3000"   
   consumer:
     build: ./consumer1
     container_name: grpc-consumer
@@ -15,5 +15,3 @@ services:
       - producer
     environment:
       - GRPC_SERVER_URL=producer:8001
-    # Optional: view consumer logs in realtime
-    # command: ["node", "dist/main.js"]
