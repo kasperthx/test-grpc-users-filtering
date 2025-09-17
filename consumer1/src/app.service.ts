@@ -23,11 +23,12 @@ export class AppService implements OnModuleInit {
     this.usersServiceClient =
       this.client.getService<UsersServiceClient>(USERS_SERVICE_NAME);
 
-    console.log(await firstValueFrom(
+    const users = await firstValueFrom(
       this.getFilteredUsers({})
-    ))
+    )
+    console.log(`Filtered users:`,users.data);
   }
-
+  
   getFilteredUsers(request: GetFilteredUsersRequest): Observable<GetFilteredUsersResponse> {
     return this.usersServiceClient.getFilteredUsers(request);
   }
